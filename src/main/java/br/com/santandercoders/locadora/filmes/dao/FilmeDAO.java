@@ -39,6 +39,7 @@ public class FilmeDAO {
     }
 
     public void removerFilmePorId(Long id) {
+        filmesFavoritos.removeIf(filme -> filme.getId().equals(id));
         filmes.removeIf(filme -> filme.getId().equals(id));
     }
 

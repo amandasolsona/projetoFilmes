@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Atores</title>
+</head>
+<body>
+<h1>Atores</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Apelido</th>
+        <th>Nacionalidade</th>
+        <th>Imagem</th>
+        <th>Editar</th>
+        <th>Excluir</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="ator : ${atores}">
+        <td th:text="${ator.id}"></td>
+        <td th:text="${ator.nome}"></td>
+        <td th:text="${ator.apelido}"></td>
+        <td th:text="${ator.nacionalidade}"></td>
+        <td>
+            <img th:src="@{${ator.imagem}}" width="70px" />
+        </td>
+        <td><a th:href="@{/ator/editar/{id}(id=${ator.id})}">Editar</a></td>
+        <td><a th:href="@{/ator/remover/{id}(id=${ator.id})}" onclick="return confirm('Tem certeza que deseja excluir este ator?')">Excluir</a></td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<a th:href="@{/ator/novo}">Adicionar novo Ator</a>
+<br>
+<a th:href="@{/}">Pagina Inicial</a>
+</body>
+</html>

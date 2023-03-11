@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Locadora de Filmes</title>
+</head>
+<body>
+<h1><a th:href="@{/filme}">Filmes</a></h1>
+<table id="tabela-filmes">
+  <thead>
+  <tr>
+    <th>Likes</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="filme : ${filmes}">
+    <td style="padding-right:40px;" th:text="${filme.qteLike}"></td>
+    <td style="padding-right:50px;">
+      <img th:src="@{${filme.imagem}}" width="80px" />
+    </td>
+    <td style="padding-right:30px;">
+      <p th:text="${filme.titulo}"></p>
+      <p th:text="${filme.sinopse}"></p>
+    </td>
+    <td th:text="${filme.duracao}" style="padding-right:10px;"></td>
+    <td style="padding-right:10px;"><a th:href="@{/filme/favorito/{id}(id=${filme.id})}">Favorito</a></td>
+    <td style="padding-right:10px;"><a th:href="@{/filme/editar/{id}(id=${filme.id})}">Editar</a></td>
+    <td style="padding-right:10px;"><a th:href="@{/filme/remover/{id}(id=${filme.id})}" onclick="return confirm('Tem certeza que deseja excluir este filme?')">Remover</a></td>
+    <td style="padding-right:10px;"><a th:href="@{/filme/like/{id}(id=${filme.id})}">Like</a></td>
+    <td style="padding-right:10px;"><a th:href="@{/filme/deslike/{id}(id=${filme.id})}">Deslike</a></td>
+  </tr>
+  </tbody>
+</table>
+
+<h1><a th:href="@{/noticia}">Noticias</a></h1>
+<table id="tabela-noticias">
+  <tbody>
+  <tr th:each="noticia : ${noticias}">
+
+    <div>
+      <td style="padding-right:50px;">
+        <img th:src="@{${noticia.imagem}}" width="180px" />
+      </td>
+    </div>
+    <div>
+      <td>
+        <p th:text="${noticia.titulo}"></p>
+        <p th:text="${noticia.autor}"></p>
+        <p th:text="${noticia.descricao}"></p>
+      </td>
+    </div>
+  </tr>
+  </tbody>
+</table>
+<h1><a th:href="@{/ator}">Atores</a></h1>
+</body>
+</html>

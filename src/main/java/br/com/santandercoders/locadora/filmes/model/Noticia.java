@@ -3,6 +3,7 @@ package br.com.santandercoders.locadora.filmes.model;
 public class Noticia {
 
     private Long id;
+    private String titulo;
     private String descricao;
     private String imagem;
     private String autor;
@@ -13,6 +14,14 @@ public class Noticia {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public String getDescricao() {

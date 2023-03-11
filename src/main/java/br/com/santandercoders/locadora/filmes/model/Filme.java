@@ -12,8 +12,8 @@ public class Filme {
     private String sinopse;
     private Double imdb;
     private String imagem;
-    private Integer qteLike;
-    private Integer qteDeslike;
+    private Integer qteLike = Integer.valueOf(0);
+    private Integer qteDeslike = Integer.valueOf(0);
     private List<Ator> atores = new ArrayList<>();
     private List<String> comentarios = new ArrayList<>();
 

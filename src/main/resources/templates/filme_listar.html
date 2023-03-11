@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Filmes</title>
+</head>
+<body>
+<h1>Filmes</h1>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Titulo</th>
+    <th>Genero</th>
+    <th>Duração</th>
+    <th>Imagem</th>
+    <th>Sinopse</th>
+    <th>IMDB</th>
+    <th>Quantidade Likes</th>
+    <th>Quantidade Deslikes</th>
+    <th>Editar</th>
+    <th>Excluir</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="filme : ${filmes}">
+    <td th:text="${filme.id}"></td>
+    <td th:text="${filme.titulo}"></td>
+    <td th:text="${filme.genero}"></td>
+    <td th:text="${filme.duracao}"></td>
+    <td>
+      <img th:src="@{${filme.imagem}}" width="70px" />
+    </td>
+    <td th:text="${filme.sinopse}"></td>
+    <td th:text="${filme.imdb}"></td>
+    <td th:text="${filme.qteLike}"></td>
+    <td th:text="${filme.qteDeslike}"></td>
+    <td><a th:href="@{/filme/editar/{id}(id=${filme.id})}">Editar</a></td>
+    <td><a th:href="@{/filme/remover/{id}(id=${filme.id})}" onclick="return confirm('Tem certeza que deseja excluir este filme?')">Excluir</a></td>
+  </tr>
+  </tbody>
+</table>
+<br>
+<a th:href="@{/filme/novo}">Adicionar novo filme</a>
+<br>
+<a th:href="@{/}">Pagina Inicial</a>
+</body>
+</html>

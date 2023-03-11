@@ -27,6 +27,10 @@ public class NoticiaDAO {
         }
     }
 
+    public Noticia buscarPorId(Long id) {
+        return noticias.stream().filter(n -> n.getId().equals(id)).findFirst().orElse(null);
+    }
+
     public void removerNoticiaPorId(Long id) {
         noticias.removeIf(noticia -> noticia.getId().equals(id));
     }

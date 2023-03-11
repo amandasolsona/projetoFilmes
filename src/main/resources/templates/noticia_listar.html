@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Noticias</title>
+</head>
+<body>
+<h1>Noticias</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Titulo</th>
+        <th>Descrição</th>
+        <th>Imagem</th>
+        <th>Autor</th>
+        <th>Editar</th>
+        <th>Excluir</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="noticia : ${noticias}">
+        <td th:text="${noticia.id}"></td>
+        <td th:text="${noticia.titulo}"></td>
+        <td th:text="${noticia.descricao}"></td>
+        <td>
+            <img th:src="@{${noticia.imagem}}" width="70px" />
+        </td>
+        <td th:text="${noticia.autor}"></td>
+        <td><a th:href="@{/noticia/editar/{id}(id=${noticia.id})}">Editar</a></td>
+        <td><a th:href="@{/noticia/remover/{id}(id=${noticia.id})}" onclick="return confirm('Tem certeza que deseja excluir esta noticia?')">Excluir</a></td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<a th:href="@{/noticia/novo}">Adicionar nova noticia</a>
+<br>
+<a th:href="@{/}">Pagina Inicial</a>
+</body>
+</html>
